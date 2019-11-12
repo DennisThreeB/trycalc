@@ -30,7 +30,7 @@ namespace trycalc.ViewModels
                         StrategieAvatar = "StratPic.jpg",
                         StrategieName = "Poisson Berechnung",
                         StrategieDescription = "Bet under/over goals with this pretty nice probably calculator",
-                        StrategieText = "Beispieltext"
+                        StrategieText = "The Poisson-Calculation is a pretty unknown way to calculate the probabilities for the results of a match. You need some statistiks to calculate it, but you will love to see how it works. For example i calculate a football match, we take a look at how many goals were made (average homegoals for hometeam, and the average awaygoals for the awayteam). These averages is what we need. You just have to fill the averages in our calculator and the calculator calculates the probability for any estimated result. You will get a table that shows you the probability for any result. At these probabilities you can see how many goals are estimated and you can place your bet based on this result."
                     },
 
                     new CardDataModel
