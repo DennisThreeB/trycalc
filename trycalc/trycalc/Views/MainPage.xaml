@@ -5,7 +5,8 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:trycalc.Views"
-            x:Class="trycalc.Views.MainPage">
+            x:Class="trycalc.Views.MainPage"
+            NavigationPage.HasNavigationBar="false">
 
     <TabbedPage.Children>
         <NavigationPage Title="Calculate">

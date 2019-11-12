@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="trycalc.Views.CalculationPage">
+             x:Class="trycalc.Views.CalculationPage"
+             NavigationPage.HasNavigationBar="false">
     
-
-<ContentPage.Content>
+        <ContentPage.Content>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,17 +18,21 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="70"/>
         </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Text="Type in your avg homescore"/>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" BindingContext="{Binding avgHomeScore}"/>
+            <Picker Grid.Row="0" Grid.ColumnSpan="2" Title="Calculation options" HorizontalOptions="CenterAndExpand" SelectedItem="{Binding SelectedCalculation, Mode=TwoWay}" ItemsSource="{Binding CalculationOptions}"></Picker>
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Type in your avg awayscore"/>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" BindingContext="{Binding avgAwayScore}"/>
+            <Label Grid.Column="0" Grid.Row="1" Text="Type in the quote of your bookie"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" BindingContext="{Binding bookieQuote, Mode=TwoWay}"/>
 
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculatePoissonClicked"/>
+            <Label Grid.Column="0" Grid.Row="2" Text="Type in your estimated probability (in %)"/>
+            <Entry Grid.Row="2" Grid.Column="1" Placeholder="30" Keyboard="Numeric" BindingContext="{Binding estimatedProbability, Mode=TwoWay}"/>
+
+            <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculatePoissonClicked"/>
+
+            <Label Grid.Row="4" Grid.ColumnSpan="2" x:Name="ValueLabel"/>
 
 </Grid>
 
