@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="trycalc.Views.CardViewTemplate">
+
+    <Frame IsClippedToBounds="True"
+       HasShadow="True"
+       BackgroundColor="White">
+        <Frame.BorderColor>
+            <OnPlatform x:TypeArguments="Color"
+                    Android="White"
+                    iOS="White"/>
+        </Frame.BorderColor>
+        <Frame.Margin>
+            <OnPlatform x:TypeArguments="Thickness"
+                        Android="7"
+                        iOS="7" />
+        </Frame.Margin>
+        <Frame.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+                         Android="5"
+                        iOS="5" />
+        </Frame.Padding>
+        <StackLayout Orientation="Horizontal">
+            <Grid VerticalOptions="CenterAndExpand"
+                  Padding="0"
+                  HorizontalOptions="FillAndExpand"
+                  BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" >
+                    <abstractions:CircleImage Source="{Binding StrategieAvatar}" VerticalOptions="Start" HeightRequest="50" WidthRequest="50"></abstractions:CircleImage>
+                    <Label FontAttributes="Bold"
+                            Grid.Row="0"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="14"
+                           Text="{Binding StrategieName}" TextColor="Black">
+                    </Label>
+                </StackLayout>
+
+                <Grid Grid.Row="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontAttributes="None"
+                               Grid.Row="1"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Start"
+                               FontSize="12"
+                               Text="{Binding StrategieDescription}" TextColor="Black">
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </Frame>
+
+</ContentView>
