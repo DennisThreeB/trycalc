@@ -28,15 +28,24 @@ namespace trycalc.Views
         {
             InitializeComponent();
 
-            var item = new ValueBetModel();
-            
+            var item = new ProbabilityBetModel();
+
             BindingContext = _viewModel = new CalculationViewModel(item);
+
+            CalculationPicker.Items.Add("Value Bet");
+            CalculationPicker.Items.Add("Probability Bet");
+            CalculationPicker.Items.Add("Poisson");
 
         }
 
         private async void CalculateValueBetClicked(object sender, EventArgs e)
         {
             ValueLabel.Text = await _viewModel.CalculateValueBet(bookieQuoteEntry.Text, estimatedProbabilityEntry.Text);
+        }
+        
+        private async void CalculateProbabilityBetClicked(object sender, EventArgs e)
+        { 
+            ProbabilityLabel.Text = await _viewModel.CalculateProbabilityBet(bookieHomeQuoteEntry.Text, bookieDrawQuoteEntry.Text, bookieAwayQuoteEntry.Text);
         }
     }
 }

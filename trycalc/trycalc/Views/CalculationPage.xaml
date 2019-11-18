@@ -6,11 +6,37 @@
              xmlns:viewModels="clr-namespace:trycalc.ViewModels;assembly=trycalc"
              mc:Ignorable="d"
              x:Class="trycalc.Views.CalculationPage"
-             NavigationPage.HasNavigationBar="true">
+             NavigationPage.HasNavigationBar="false">
 
     <ContentPage.Content>
 <StackLayout>
-    <Grid IsVisible="True" x:Name="ValueBetGrid">
+    <Picker x:Name="CalculationPicker" Title="Calculation options" HorizontalOptions="CenterAndExpand" SelectedItem="{Binding SelectedCalculation, Mode=TwoWay}"></Picker>
+
+<Grid IsVisible="false" x:Name="ValueBetGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Text="Type in the quote of your bookie"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="bookieQuoteEntry" Text="{Binding ValueBetData.bookieQuote, Mode=TwoWay}"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Type in your estimated probability (in %)"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="estimatedProbabilityEntry" Text="{Binding ValueBetData.estimatedProbability, Mode=TwoWay}"/>
+
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateValueBetClicked"/>
+
+            <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ValueLabel"/>
+</Grid>
+    
+    <Grid IsVisible="False" x:Name="PoissonGrid"></Grid>
+    <Grid IsVisible="true" x:Name="ProbabilityGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -23,22 +49,19 @@
             <ColumnDefinition Width="70"/>
         </Grid.ColumnDefinitions>
 
-            <Picker Grid.Row="0" Grid.ColumnSpan="2" Title="Calculation options" HorizontalOptions="CenterAndExpand" SelectedItem="{Binding SelectedCalculation, Mode=TwoWay}" ItemsSource="{Binding CalculationOptions}"></Picker>
+        <Label Grid.Row="0" Grid.Column="0" Text="Type in the homequote of the bookie"/>
+        <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,50" Keyboard="Numeric" x:Name="bookieHomeQuoteEntry" Text="{Binding ProbabilityBetData.homeQuote, Mode=TwoWay}"/>
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Type in the quote of your bookie"/>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="bookieQuoteEntry" Text="{Binding BetData.bookieQuote, Mode=TwoWay}"/>
+        <Label Grid.Row="1" Grid.Column="0" Text="Type in the drawquote of the bookie"/>
+        <Entry Grid.Row="1" Grid.Column="1" Placeholder="2,05" Keyboard="Numeric" x:Name="bookieDrawQuoteEntry" Text="{Binding ProbabilityBetData.drawQuote, Mode=TwoWay}"/>
 
-            <Label Grid.Column="0" Grid.Row="2" Text="Type in your estimated probability (in %)"/>
-            <Entry Grid.Row="2" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="estimatedProbabilityEntry" Text="{Binding BetData.estimatedProbability, Mode=TwoWay}"/>
+        <Label Grid.Row="2" Grid.Column="0" Text="Type in the awayquote of the bookie"/>
+        <Entry Grid.Row="2" Grid.Column="1" Placeholder="3,75" Keyboard="Numeric" x:Name="bookieAwayQuoteEntry" Text="{Binding ProbabilityBetData.awayQuote, Mode=TwoWay}"/>
 
-            <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateValueBetClicked"/>
+                <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateProbabilityBetClicked"/>
 
-            <Label Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ValueLabel"/>
-</Grid>
-
-<Grid IsVisible="False" x:Name="PoissonGrid">
-
-</Grid>
+                <Label Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ProbabilityLabel"/>
+            </Grid>
 </StackLayout>
     </ContentPage.Content>
 
