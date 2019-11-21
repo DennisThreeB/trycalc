@@ -104,18 +104,37 @@ namespace trycalc.ViewModels
                                            Math.Exp(-PoissonBetData.avgGoalsAway))*100;
 
             PoissonBetData.oneOneProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 1) / await fakultaet(1)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsHome) *
+                                          (Math.Pow(PoissonBetData.avgGoalsAway, 1) / await fakultaet(1)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
+
+            PoissonBetData.twoZeroProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 2) / await fakultaet(2)) *
                                          Math.Exp(-PoissonBetData.avgGoalsHome) *
-                                         (Math.Pow(PoissonBetData.avgGoalsAway, 1) / await fakultaet(1)) *
+                                         (Math.Pow(PoissonBetData.avgGoalsAway, 0) / await fakultaet(0)) *
                                          Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
 
+            PoissonBetData.zeroTwoProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 0) / await fakultaet(0)) *
+                                         Math.Exp(-PoissonBetData.avgGoalsHome) *
+                                         (Math.Pow(PoissonBetData.avgGoalsAway, 2) / await fakultaet(2)) *
+                                         Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
 
+            PoissonBetData.overTwoFiveProb = 100 - (PoissonBetData.zeroZeroProb + PoissonBetData.oneZeroProb +
+                                             PoissonBetData.zeroOneProb + PoissonBetData.oneOneProb +
+                                             PoissonBetData.twoZeroProb + PoissonBetData.zeroTwoProb);
 
+            PoissonBetData.underTwoFiveProb = PoissonBetData.zeroZeroProb + PoissonBetData.oneZeroProb +
+                                             PoissonBetData.zeroOneProb + PoissonBetData.oneOneProb +
+                                             PoissonBetData.twoZeroProb + PoissonBetData.zeroTwoProb;
 
             return "Poisson says: \n"
                    + Math.Round(PoissonBetData.zeroZeroProb, 1) + "% probability to get a 0:0 \n"
                    + Math.Round(PoissonBetData.oneZeroProb, 1) + "% probability to get a 1:0 \n"
                    + Math.Round(PoissonBetData.zeroOneProb, 1) + "% probability to get a 0:1 \n"
-                   + Math.Round(PoissonBetData.oneOneProb, 1) + "% probability to get a 1:1 \n";
+                   + Math.Round(PoissonBetData.oneOneProb, 1) + "% probability to get a 1:1 \n"
+                   + Math.Round(PoissonBetData.twoZeroProb, 1) + "% probability to get a 2:0 \n"
+                   + Math.Round(PoissonBetData.zeroTwoProb, 1) + "% probability to get a 0:2 \n \n"
+                   + Math.Round(PoissonBetData.overTwoFiveProb, 1) + "% probability to get over 2.5 goals \n"
+                   + Math.Round(PoissonBetData.underTwoFiveProb, 1) + "% probability to get under 2.5 goals \n";
 
         }
 
