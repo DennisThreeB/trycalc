@@ -13,10 +13,10 @@ namespace trycalc.ViewModels
         {
             ValueBetData = item;
         }
-        
+
         public ValueBetModel ValueBetData { get; set; }
 
-        public async Task<string>CalculateValueBet(string bookieQuoteEntry, string estimatedProbabilityEntry)
+        public async Task<string> CalculateValueBet(string bookieQuoteEntry, string estimatedProbabilityEntry)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace trycalc.ViewModels
                 Console.WriteLine(e);
                 throw;
             }
-            
+
             ValueBetData.valueBetValue = (ValueBetData.bookieQuote * ValueBetData.estimatedProbability) / 100;
 
             if (ValueBetData.valueBetValue > 1.00)
@@ -51,7 +51,8 @@ namespace trycalc.ViewModels
         public ProbabilityBetModel ProbabilityBetData { get; set; }
 
 
-        public async Task<string>CalculateProbabilityBet(string bookieHomeQuoteEntry, string bookieDrawQuoteEntry, string bookieAwayQuoteEntry)
+        public async Task<string> CalculateProbabilityBet(string bookieHomeQuoteEntry, string bookieDrawQuoteEntry,
+            string bookieAwayQuoteEntry)
         {
             try
             {
@@ -69,7 +70,63 @@ namespace trycalc.ViewModels
             ProbabilityBetData.drawProbability = (1 / ProbabilityBetData.drawQuote) * 100;
             ProbabilityBetData.awayProbability = (1 / ProbabilityBetData.awayQuote) * 100;
 
-           return "Probability win home: " + Math.Round(ProbabilityBetData.homeProbability, 2) +"%"+ "\n Probability draw: " + Math.Round(ProbabilityBetData.drawProbability, 2) + "%" + "\n Probability away home: " + Math.Round(ProbabilityBetData.awayProbability, 2) + "%";
+            return "Probability win home: " + Math.Round(ProbabilityBetData.homeProbability, 2) + "%" +
+                   "\n Probability draw: " + Math.Round(ProbabilityBetData.drawProbability, 2) + "%" +
+                   "\n Probability away home: " + Math.Round(ProbabilityBetData.awayProbability, 2) + "%";
+        }
+
+        public CalculationViewModel(PoissonModel item = null)
+        {
+            PoissonBetData = item;
+        }
+
+        public PoissonModel PoissonBetData { get; set; }
+
+
+        public async Task<string> CalculatePoissonBet(string avgGoalsHome, string avgGoalsAway)
+        {
+            PoissonBetData.avgGoalsHome = double.Parse(avgGoalsHome);
+            PoissonBetData.avgGoalsAway = double.Parse(avgGoalsAway);
+
+            PoissonBetData.zeroZeroProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 0) / await fakultaet(0)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsHome) *
+                                          (Math.Pow(PoissonBetData.avgGoalsAway, 0) / await fakultaet(0)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
+            
+            PoissonBetData.oneZeroProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 1) / await fakultaet(1)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsHome) *
+                                          (Math.Pow(PoissonBetData.avgGoalsAway, 0) / await fakultaet(0)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
+            
+            PoissonBetData.zeroOneProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 0) / await fakultaet(0)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsHome) *
+                                          (Math.Pow(PoissonBetData.avgGoalsAway, 1) / await fakultaet(1)) *
+                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
+
+            PoissonBetData.oneOneProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 1) / await fakultaet(1)) *
+                                         Math.Exp(-PoissonBetData.avgGoalsHome) *
+                                         (Math.Pow(PoissonBetData.avgGoalsAway, 1) / await fakultaet(1)) *
+                                         Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
+
+
+
+
+            return "Poisson says: \n"
+                   + Math.Round(PoissonBetData.zeroZeroProb, 1) + "% probability to get a 0:0 \n"
+                   + Math.Round(PoissonBetData.oneZeroProb, 1) + "% probability to get a 1:0 \n"
+                   + Math.Round(PoissonBetData.zeroOneProb, 1) + "% probability to get a 0:1 \n"
+                   + Math.Round(PoissonBetData.oneOneProb, 1) + "% probability to get a 1:1 \n";
+
+        }
+
+        private async Task<double> fakultaet(int goals)
+        {
+            double ergebnis = 1;
+            for (int i = 1; i <= goals; i++)
+            {
+                ergebnis *= i;
+            }
+            return ergebnis;
         }
     }
 }

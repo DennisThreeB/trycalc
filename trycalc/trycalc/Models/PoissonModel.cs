@@ -6,8 +6,12 @@ namespace trycalc.Models
 {
     public class PoissonModel
     {
-        public double avgHomeGoals { get; set; }
-        public double avgAwayGoals { get; set; }
-
+        public double avgGoalsHome { get; set; }
+        public double avgGoalsAway { get; set; }
+        public double zeroZeroProb { get; set; }
+        public double oneZeroProb { get; set; }
+        public double zeroOneProb { get; set; }
+        public double oneOneProb { get; set; }
+        public double overTwoFiveProb { get; set; }
     }
 }

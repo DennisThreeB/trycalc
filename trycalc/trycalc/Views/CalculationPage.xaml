@@ -35,8 +35,33 @@
             <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ValueLabel"/>
 </Grid>
     
-    <Grid IsVisible="False" x:Name="PoissonGrid"></Grid>
-    <Grid IsVisible="true" x:Name="ProbabilityGrid">
+    <Grid IsVisible="true" x:Name="PoissonGrid">
+        <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Text="Type in the average homegoals of hometeam"/>
+        <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="avgGoalsHome" Text="{Binding PoissonBetData.avgGoalsHome, Mode=TwoWay}"/>
+
+                <Label Grid.Column="0" Grid.Row="1" Text="Type in the average awaygoals of awayteam"/>
+                <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="avgGoalsAway" Text="{Binding PoissonBetData.avgGoalsAway, Mode=TwoWay}"/>
+
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculatePoissonBetClicked"/>
+
+        <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="PoissonLabel"/>
+
+            </Grid>
+
+
+    <Grid IsVisible="false" x:Name="ProbabilityGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

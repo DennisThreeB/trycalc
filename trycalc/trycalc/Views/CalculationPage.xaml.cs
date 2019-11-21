@@ -28,7 +28,7 @@ namespace trycalc.Views
         {
             InitializeComponent();
 
-            var item = new ProbabilityBetModel();
+            var item = new PoissonModel();
 
             BindingContext = _viewModel = new CalculationViewModel(item);
 
@@ -46,6 +46,11 @@ namespace trycalc.Views
         private async void CalculateProbabilityBetClicked(object sender, EventArgs e)
         { 
             ProbabilityLabel.Text = await _viewModel.CalculateProbabilityBet(bookieHomeQuoteEntry.Text, bookieDrawQuoteEntry.Text, bookieAwayQuoteEntry.Text);
+        }
+        
+        private async void CalculatePoissonBetClicked(object sender, EventArgs e)
+        { 
+            PoissonLabel.Text = await _viewModel.CalculatePoissonBet(avgGoalsHome.Text, avgGoalsAway.Text);
         }
     }
 }
