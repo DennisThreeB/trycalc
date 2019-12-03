@@ -13,7 +13,6 @@ namespace trycalc
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
