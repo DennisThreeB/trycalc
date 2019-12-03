@@ -9,6 +9,9 @@ namespace trycalc.ViewModels
 {
     public class CalculationViewModel : BaseViewModel
     {
+
+        #region ValueBet
+
         public CalculationViewModel(ValueBetModel item = null)
         {
             ValueBetData = item;
@@ -40,40 +43,11 @@ namespace trycalc.ViewModels
                 return "Oh no, it's not a valuebet. Your result is " + ValueBetData.valueBetValue;
 
             }
-
         }
 
-        public CalculationViewModel(ProbabilityBetModel item = null)
-        {
-            ProbabilityBetData = item;
-        }
+        #endregion
 
-        public ProbabilityBetModel ProbabilityBetData { get; set; }
-
-
-        public async Task<string> CalculateProbabilityBet(string bookieHomeQuoteEntry, string bookieDrawQuoteEntry,
-            string bookieAwayQuoteEntry)
-        {
-            try
-            {
-                ProbabilityBetData.homeQuote = double.Parse(bookieHomeQuoteEntry);
-                ProbabilityBetData.drawQuote = double.Parse(bookieDrawQuoteEntry);
-                ProbabilityBetData.awayQuote = double.Parse(bookieAwayQuoteEntry);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
-            ProbabilityBetData.homeProbability = (1 / ProbabilityBetData.homeQuote) * 100;
-            ProbabilityBetData.drawProbability = (1 / ProbabilityBetData.drawQuote) * 100;
-            ProbabilityBetData.awayProbability = (1 / ProbabilityBetData.awayQuote) * 100;
-
-            return "Probability win home: " + Math.Round(ProbabilityBetData.homeProbability, 2) + "%" +
-                   "\n Probability draw: " + Math.Round(ProbabilityBetData.drawProbability, 2) + "%" +
-                   "\n Probability away home: " + Math.Round(ProbabilityBetData.awayProbability, 2) + "%";
-        }
+        #region PoissonBet
 
         public CalculationViewModel(PoissonModel item = null)
         {
@@ -91,22 +65,22 @@ namespace trycalc.ViewModels
             PoissonBetData.zeroZeroProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 0) / await fakultaet(0)) *
                                            Math.Exp(-PoissonBetData.avgGoalsHome) *
                                           (Math.Pow(PoissonBetData.avgGoalsAway, 0) / await fakultaet(0)) *
-                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
-            
+                                           Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
+
             PoissonBetData.oneZeroProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 1) / await fakultaet(1)) *
                                            Math.Exp(-PoissonBetData.avgGoalsHome) *
                                           (Math.Pow(PoissonBetData.avgGoalsAway, 0) / await fakultaet(0)) *
-                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
-            
+                                           Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
+
             PoissonBetData.zeroOneProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 0) / await fakultaet(0)) *
                                            Math.Exp(-PoissonBetData.avgGoalsHome) *
                                           (Math.Pow(PoissonBetData.avgGoalsAway, 1) / await fakultaet(1)) *
-                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
+                                           Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
 
             PoissonBetData.oneOneProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 1) / await fakultaet(1)) *
                                            Math.Exp(-PoissonBetData.avgGoalsHome) *
                                           (Math.Pow(PoissonBetData.avgGoalsAway, 1) / await fakultaet(1)) *
-                                           Math.Exp(-PoissonBetData.avgGoalsAway))*100;
+                                           Math.Exp(-PoissonBetData.avgGoalsAway)) * 100;
 
             PoissonBetData.twoZeroProb = ((Math.Pow(PoissonBetData.avgGoalsHome, 2) / await fakultaet(2)) *
                                          Math.Exp(-PoissonBetData.avgGoalsHome) *
@@ -147,5 +121,43 @@ namespace trycalc.ViewModels
             }
             return ergebnis;
         }
+
+        #endregion
+
+        #region ProbabilityBet
+        public CalculationViewModel(ProbabilityBetModel item = null)
+        {
+            ProbabilityBetData = item;
+        }
+
+        public ProbabilityBetModel ProbabilityBetData { get; set; }
+
+
+        public async Task<string> CalculateProbabilityBet(string bookieHomeQuoteEntry, string bookieDrawQuoteEntry,
+            string bookieAwayQuoteEntry)
+        {
+            try
+            {
+                ProbabilityBetData.homeQuote = double.Parse(bookieHomeQuoteEntry);
+                ProbabilityBetData.drawQuote = double.Parse(bookieDrawQuoteEntry);
+                ProbabilityBetData.awayQuote = double.Parse(bookieAwayQuoteEntry);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            ProbabilityBetData.homeProbability = (1 / ProbabilityBetData.homeQuote) * 100;
+            ProbabilityBetData.drawProbability = (1 / ProbabilityBetData.drawQuote) * 100;
+            ProbabilityBetData.awayProbability = (1 / ProbabilityBetData.awayQuote) * 100;
+
+            return "The following probabilities represents the rate of what your bookie things" +
+                   "\n Probability win home: " + Math.Round(ProbabilityBetData.homeProbability, 2) + "%" +
+                   "\n Probability draw: " + Math.Round(ProbabilityBetData.drawProbability, 2) + "%" +
+                   "\n Probability away home: " + Math.Round(ProbabilityBetData.awayProbability, 2) + "%";
+        }
+        #endregion
+
     }
 }
