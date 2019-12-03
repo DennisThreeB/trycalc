@@ -13,7 +13,11 @@ namespace trycalc
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainPage()
+            {
+                BarBackgroundColor = Color.FromHex("#006600"),
+                BarTextColor = Color.White
+            };
         }
 
         protected override void OnStart()
