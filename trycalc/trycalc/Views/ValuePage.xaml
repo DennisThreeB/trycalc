@@ -7,7 +7,7 @@
              x:Class="trycalc.Views.ValuePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid IsVisible="True" x:Name="ValueBetGrid">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -20,10 +20,10 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Text="Type in the quote of your bookie"/>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="bookieQuoteEntry" Text="{Binding ValueBetData.bookieQuote, Mode=TwoWay}"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="bookieQuoteEntry"/>
 
             <Label Grid.Column="0" Grid.Row="1" Text="Type in your estimated probability (in %)"/>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="estimatedProbabilityEntry" Text="{Binding ValueBetData.estimatedProbability, Mode=TwoWay}"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="estimatedProbabilityEntry"/>
 
             <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateValueBetClicked"/>
 

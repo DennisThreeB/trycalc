@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="trycalc.Views.ProbabilityPage">
     <ContentPage.Content>
-        <Grid IsVisible="True" x:Name="ProbabilityGrid">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -20,13 +20,13 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Text="Type in the homequote of the bookie"/>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,50" Keyboard="Numeric" x:Name="bookieHomeQuoteEntry" Text="{Binding ProbabilityBetData.homeQuote, Mode=TwoWay}"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,50" Keyboard="Numeric" x:Name="bookieHomeQuoteEntry"/>
 
             <Label Grid.Row="1" Grid.Column="0" Text="Type in the drawquote of the bookie"/>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="2,05" Keyboard="Numeric" x:Name="bookieDrawQuoteEntry" Text="{Binding ProbabilityBetData.drawQuote, Mode=TwoWay}"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="2,05" Keyboard="Numeric" x:Name="bookieDrawQuoteEntry"/>
 
             <Label Grid.Row="2" Grid.Column="0" Text="Type in the awayquote of the bookie"/>
-            <Entry Grid.Row="2" Grid.Column="1" Placeholder="3,75" Keyboard="Numeric" x:Name="bookieAwayQuoteEntry" Text="{Binding ProbabilityBetData.awayQuote, Mode=TwoWay}"/>
+            <Entry Grid.Row="2" Grid.Column="1" Placeholder="3,75" Keyboard="Numeric" x:Name="bookieAwayQuoteEntry"/>
 
             <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateProbabilityBetClicked"/>
 

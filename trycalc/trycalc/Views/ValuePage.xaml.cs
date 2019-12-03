@@ -26,7 +26,23 @@ namespace trycalc.Views
 
         private async void CalculateValueBetClicked(object sender, EventArgs e)
         {
-            ValueLabel.Text = await _viewModel.CalculateValueBet(bookieQuoteEntry.Text, estimatedProbabilityEntry.Text);
+            if (bookieQuoteEntry.Text == null | estimatedProbabilityEntry.Text == null)
+            {
+               await DisplayAlert("Oooops", "You have to add all values to calculate", "OK");
+            }
+            else
+            {
+                try
+                {
+                    ValueLabel.Text = await _viewModel.CalculateValueBet(bookieQuoteEntry.Text, estimatedProbabilityEntry.Text);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throw;
+                }
+            }
+            
         }
     }
 }

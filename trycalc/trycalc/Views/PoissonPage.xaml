@@ -7,7 +7,7 @@
              x:Class="trycalc.Views.PoissonPage"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-       <Grid IsVisible="true" x:Name="PoissonGrid">
+       <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -21,10 +21,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Grid.Row="0" Text="Type in the average homegoals of hometeam"/>
-                <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="avgGoalsHome" Text="{Binding PoissonBetData.avgGoalsHome, Mode=TwoWay}"/>
+                <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="avgGoalsHome"/>
 
                 <Label Grid.Column="0" Grid.Row="1" Text="Type in the average awaygoals of awayteam"/>
-                <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="avgGoalsAway" Text="{Binding PoissonBetData.avgGoalsAway, Mode=TwoWay}"/>
+                <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="avgGoalsAway"/>
 
                 <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculatePoissonBetClicked"/>
 

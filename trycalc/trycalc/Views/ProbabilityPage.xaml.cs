@@ -25,7 +25,22 @@ namespace trycalc.Views
         }
         private async void CalculateProbabilityBetClicked(object sender, EventArgs e)
         {
-            ProbabilityLabel.Text = await _viewModel.CalculateProbabilityBet(bookieHomeQuoteEntry.Text, bookieDrawQuoteEntry.Text, bookieAwayQuoteEntry.Text);
+            if (bookieHomeQuoteEntry.Text == null | bookieDrawQuoteEntry.Text == null | bookieAwayQuoteEntry.Text == null)
+            {
+                await DisplayAlert("Oooops", "You have to add all values to calculate", "OK");
+            }
+            else
+            {
+                try
+                {
+                    ProbabilityLabel.Text = await _viewModel.CalculateProbabilityBet(bookieHomeQuoteEntry.Text, bookieDrawQuoteEntry.Text, bookieAwayQuoteEntry.Text);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throw;
+                }
+            }
         }
     }
 }
