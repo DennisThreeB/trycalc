@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="trycalc.Views.AboutPage"
              xmlns:vm="clr-namespace:trycalc.ViewModels"
-             xmlns:views="clr-namespace:trycalc.Views;assembly=trycalc">
+             xmlns:views="clr-namespace:trycalc.Views;assembly=trycalc"
+             NavigationPage.HasNavigationBar="false">
 
     <ContentPage.BindingContext>
         <vm:CardDataViewModel/>

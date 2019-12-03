@@ -12,8 +12,6 @@ namespace trycalc.ViewModels
         public StrategieDetailViewModel(CardDataModel item)
         {
             StrategieItem = item;
-            //StrategieItem.StrategieAvatar = item.StrategieAvatar;
-            //StrategieItem.StrategieName = item.StrategieName;
         }
     }
 }
