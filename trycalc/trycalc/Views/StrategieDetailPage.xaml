@@ -8,7 +8,7 @@
              NavigationPage.HasNavigationBar="false">
     
 <ContentPage.Content>
-    <StackLayout BackgroundColor="Black">
+        <StackLayout BackgroundColor="DarkGray">
             <Image Source="{Binding StrategieItem.StrategieAvatar}" Aspect="AspectFit" HorizontalOptions="FillAndExpand" Margin="0, 0, 15, 0"/>
             <Label Text="{Binding StrategieItem.StrategieName}" FontSize="Large" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"/>
             <Label Text="{Binding StrategieItem.StrategieText}" TextColor="White" Margin="25, 25, 25, 25" />

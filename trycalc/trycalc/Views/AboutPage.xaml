@@ -13,7 +13,7 @@
         <vm:CardDataViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout Orientation="Vertical" BackgroundColor="Black">
+    <StackLayout Orientation="Vertical" BackgroundColor="DarkGray">
 
         <ListView x:Name="StrategieListView" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                   RowHeight="150" SeparatorVisibility="None" BackgroundColor="Black"

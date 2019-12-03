@@ -7,10 +7,13 @@
              x:Class="trycalc.Views.MyBetsPage"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="Black">
             <Label Text="This becomes the betsarchiv!"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="White"
+                FontSize="Large"
+                FontAttributes="Bold"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
