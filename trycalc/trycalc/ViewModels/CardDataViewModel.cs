@@ -7,7 +7,7 @@ using Xamarin.Forms.Internals;
 
 namespace trycalc.ViewModels
 {
-        class CardDataViewModel
+       public class CardDataViewModel : BaseViewModel
         {
 
             public IList<CardDataModel> CardDataCollection { get; set; }
