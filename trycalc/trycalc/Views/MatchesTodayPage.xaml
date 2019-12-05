@@ -3,25 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="trycalc.Views.AboutPage"
-             xmlns:vm="clr-namespace:trycalc.ViewModels"
+             xmlns:viewModels="clr-namespace:trycalc.ViewModels;assembly=trycalc"
              xmlns:views="clr-namespace:trycalc.Views;assembly=trycalc"
-             NavigationPage.HasNavigationBar="false">
+             mc:Ignorable="d"
+             x:Class="trycalc.Views.MatchesTodayPage"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
-        <vm:CardDataViewModel/>
+        <viewModels:MatchDataViewModel/>
     </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical" BackgroundColor="DarkGray">
 
-        <ListView x:Name="StrategieListView" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+        <ListView x:Name="TodaysMatchesListView" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                   RowHeight="150" SeparatorVisibility="None" BackgroundColor="Black"
-                  ItemsSource="{Binding CardDataCollection}" HasUnevenRows="False" ItemSelected="StrategieItemClicked">
+                  ItemsSource="{Binding MatchCardDataCollection}" HasUnevenRows="False" ItemSelected="MatchItemClicked">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <views:CardViewTemplate/>
+                        <views:MatchCardViewTemplate/>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

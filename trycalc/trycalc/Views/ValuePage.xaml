@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="trycalc.Views.ValuePage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="footballBG.png">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,15 +20,15 @@
                 <ColumnDefinition Width="70"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Text="Type in the quote of your bookie"/>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="bookieQuoteEntry"/>
+            <Label Grid.Column="0" Grid.Row="0" Text="Type in the quote of your bookie" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="bookieQuoteEntry" TextColor="White" FontSize="Large"/>
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Type in your estimated probability (in %)"/>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="estimatedProbabilityEntry"/>
+            <Label Grid.Column="0" Grid.Row="1" Text="Type in your estimated probability (in %)" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="estimatedProbabilityEntry" TextColor="White" FontSize="Large"/>
 
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateValueBetClicked"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateValueBetClicked" FontSize="Large" FontAttributes="Bold"/>
 
-            <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ValueLabel"/>
+            <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ValueLabel" TextColor="White" FontSize="Large"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

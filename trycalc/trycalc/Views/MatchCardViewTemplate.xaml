@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="trycalc.Views.MatchCardViewTemplate">
+
+    <Frame IsClippedToBounds="True"
+       HasShadow="True"
+       BackgroundColor="White">
+        <Frame.BorderColor>
+            <OnPlatform x:TypeArguments="Color"
+                    Android="White"
+                    iOS="White"/>
+        </Frame.BorderColor>
+        <Frame.Margin>
+            <OnPlatform x:TypeArguments="Thickness"
+                        Android="7"
+                        iOS="7" />
+        </Frame.Margin>
+        <Frame.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+                         Android="5"
+                        iOS="5" />
+        </Frame.Padding>
+        <StackLayout Orientation="Horizontal">
+            <Grid VerticalOptions="CenterAndExpand"
+                  Padding="0"
+                  HorizontalOptions="FillAndExpand"
+                  BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="{Binding homePlace}" FontSize="Small" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
+                <Image Source="{Binding homeLogo}" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50" Grid.Row="0" Grid.Column="0"></Image>
+                <Label Text="{Binding homeTeam}" Grid.Row="1" Grid.Column="0" FontSize="12" HorizontalTextAlignment="Center"></Label>
+                
+                <Label FontAttributes="Bold" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="21" Text="VS" TextColor="Black"></Label>
+                <Label FontAttributes="None" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontSize="12" Text="{Binding matchTime}" TextColor="Black"></Label>
+
+                <Label Text="{Binding awayPlace}" FontSize="Small" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="2"></Label>
+                <Image Source="{Binding awayLogo}" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50" Grid.Row="0" Grid.Column="2"></Image>
+                <Label Text="{Binding awayTeam}" Grid.Row="1" Grid.Column="2" FontSize="12" HorizontalTextAlignment="Center"></Label>
+
+                <Button Text="Poisson" Grid.Row="2" HorizontalOptions="Center" Grid.Column="0"></Button>
+                <Button Text="Value" Grid.Row="2" HorizontalOptions="Center" Grid.Column="1"></Button>
+                <Button Text="Probability" Grid.Row="2" HorizontalOptions="Center" Grid.Column="2"></Button>
+                
+
+            </Grid>
+        </StackLayout>
+    </Frame>
+</ContentView>

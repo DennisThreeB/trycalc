@@ -94,7 +94,9 @@
       <Name>trycalc</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\footballBG.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\StratPic.jpg" />
   </ItemGroup>

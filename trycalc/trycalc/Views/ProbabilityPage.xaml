@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="trycalc.Views.ProbabilityPage">
+             x:Class="trycalc.Views.ProbabilityPage"
+             BackgroundImageSource="footballBG.png">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,18 +20,18 @@
                 <ColumnDefinition Width="70"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Text="Type in the homequote of the bookie"/>
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,50" Keyboard="Numeric" x:Name="bookieHomeQuoteEntry"/>
+            <Label Grid.Row="0" Grid.Column="0" Text="Type in the homequote of the bookie" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,50" Keyboard="Numeric" x:Name="bookieHomeQuoteEntry" TextColor="White" FontSize="Large"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Text="Type in the drawquote of the bookie"/>
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="2,05" Keyboard="Numeric" x:Name="bookieDrawQuoteEntry"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Type in the drawquote of the bookie" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="2,05" Keyboard="Numeric" x:Name="bookieDrawQuoteEntry" TextColor="White" FontSize="Large"/>
 
-            <Label Grid.Row="2" Grid.Column="0" Text="Type in the awayquote of the bookie"/>
-            <Entry Grid.Row="2" Grid.Column="1" Placeholder="3,75" Keyboard="Numeric" x:Name="bookieAwayQuoteEntry"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Type in the awayquote of the bookie" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="2" Grid.Column="1" Placeholder="3,75" Keyboard="Numeric" x:Name="bookieAwayQuoteEntry" TextColor="White" FontSize="Large"/>
 
-            <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateProbabilityBetClicked"/>
+            <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculateProbabilityBetClicked" FontSize="Large" FontAttributes="Bold"/>
 
-            <Label Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ProbabilityLabel"/>
+            <Label Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="ProbabilityLabel" TextColor="White" FontSize="Large"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

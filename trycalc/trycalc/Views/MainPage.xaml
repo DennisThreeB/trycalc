@@ -20,14 +20,14 @@
             </x:Arguments>
         </NavigationPage>
         
-        <NavigationPage Title="My Bets">
+        <NavigationPage Title="Today">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:MyBetsPage />
+                <views:MatchesTodayPage />
             </x:Arguments>
         </NavigationPage>
         

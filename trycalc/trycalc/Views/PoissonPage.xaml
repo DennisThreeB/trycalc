@@ -5,31 +5,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="trycalc.Views.PoissonPage"
-             NavigationPage.HasNavigationBar="false">
+             NavigationPage.HasNavigationBar="false"
+             BackgroundImageSource="footballBG.png">
     <ContentPage.Content>
-       <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="70"/>
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" Text="Type in the average homegoals of hometeam"/>
-                <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="avgGoalsHome"/>
+            <Label Grid.Column="0" Grid.Row="0" Text="Type in the average homegoals of hometeam" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="1,23" Keyboard="Numeric" x:Name="avgGoalsHome" TextColor="White" FontSize="Large"/>
 
-                <Label Grid.Column="0" Grid.Row="1" Text="Type in the average awaygoals of awayteam"/>
-                <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="avgGoalsAway"/>
+            <Label Grid.Column="0" Grid.Row="1" Text="Type in the average awaygoals of awayteam" TextColor="White" FontSize="Large"/>
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="30" Keyboard="Numeric" x:Name="avgGoalsAway" TextColor="White" FontSize="Large"/>
 
-                <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculatePoissonBetClicked"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Calculate !" Clicked="CalculatePoissonBetClicked" FontSize="Large" FontAttributes="Bold"/>
 
-                <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="PoissonLabel"/>
-
+            <Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" FontAttributes="Bold" x:Name="PoissonLabel" FontSize="Large"/>
             </Grid>
     </ContentPage.Content>
 </ContentPage>
